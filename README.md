@@ -8,7 +8,7 @@ Machine learning classification project applying supervised and unsupervised alg
     Marvin Heß
     Shams Hajizada
     Joan LeBaptiste
-    Jagan LastName
+    Jagan Nadackal Sajeevan 
 
 ### Tech Stack
 
