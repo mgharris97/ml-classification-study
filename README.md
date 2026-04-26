@@ -38,9 +38,11 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
-### 4. Download the dataset
+### 4. Download the dataset and extract `winequality-red.csv`
+
 [University of California, Irvice Wine Quality Dataset](https://archive.ics.uci.edu/dataset/186/wine+quality)
 
 ### 5. Save your dataset in the following location
-> `data/winequalityred.csv`
-For example 
+> `ml-classification-study/data/winequality-red.csv`
+> 
+> The dataset itself will not get uploaded to the repo, but will remian locally on your machine and the program uses a pathlib constant `DATA_PATH` to find it regardless of system 
