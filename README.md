@@ -6,9 +6,9 @@ Machine learning classification project applying supervised and unsupervised alg
 
     Matthew Harris
     Marvin Heß
-    Shams LastName
-    Joan LastName
-    Fift Team Memeber
+    Shams Hajizada
+    Joan LeBaptiste
+    Jagan LastName
 
 ### Tech Stack
 
@@ -39,4 +39,8 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 ### 4. Download the dataset
-This will be changed once we decide on a dataset
+[University of California, Irvice Wine Quality Dataset](https://archive.ics.uci.edu/dataset/186/wine+quality)
+
+### 5. Save your dataset in the following location
+> `data/winequalityred.csv`
+For example 
