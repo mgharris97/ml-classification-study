@@ -4,9 +4,9 @@ Machine learning classification project applying supervised and unsupervised alg
 
 ### Participants:
 
+    Shams Hajizada
     Matthew Harris
     Marvin Heß
-    Shams Hajizada
     Joan LeBaptiste
     Jagan Nadackal Sajeevan 
 
