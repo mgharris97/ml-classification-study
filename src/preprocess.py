@@ -30,7 +30,7 @@ print(f"(rows, columns): {df.shape}\n")
 # ===EMPTY FIELD CHECK===
 print(f"number of empty fields in each column:\n{df.isnull().sum()}")
 
-# ===OUTLIERS===
+# ===OUTLIERS USING IQR===
 # Finding outliers in the dataset using IQR method 
 # After running and excluding outliers, the dataset shrinks from (rows, columns) -> (1359, 12) to (985, 12)
 for column in df.columns[:-1]:
@@ -53,6 +53,10 @@ print(df["quality_label"].value_counts())
 #===EXPORT TO NEW CSV===
 # df.to_csv (new files name, maintain semicolon as seperator, do not add column and row nums)
 df.to_csv(DATA_PATH_CLEANED, sep=';', index=False )
+
+#===CORELATION BETWEEN FEATURES===
+print(f"\nCorretlation between features:\n {df.drop(columns=["quality_label"]).corr()}")
+
 
 
 
