@@ -3,7 +3,7 @@
 # Explore (26-28)
 # Duplicates (25-28)
 # Missing values (30-31)
-# Outliers 
+# Outliers  (33-44)
 # Bin quality
 # Export to a new CSV that will be used for training
 
@@ -13,7 +13,7 @@ import pandas as pd
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_PATH = BASE_DIR / "data" / "winequality-red.csv"
-
+DATA_PATH_CLEANED = BASE_DIR / "data" / "winequality-red-cleaned.csv"
 
 df = pd.read_csv(DATA_PATH, sep=";")
 
@@ -31,9 +31,28 @@ print(f"(rows, columns): {df.shape}\n")
 print(f"number of empty fields in each column:\n{df.isnull().sum()}")
 
 # ===OUTLIERS===
-for columns in df.columns[:-1]:
-    # ill finish this later
+# Finding outliers in the dataset using IQR method 
+# After running and excluding outliers, the dataset shrinks from (rows, columns) -> (1359, 12) to (985, 12)
+for column in df.columns[:-1]:
+    Q1 = df[column].quantile(0.25)
+    Q3 = df[column].quantile(0.75)
+    IQR = Q3 - Q1
+    lower = Q1 - 1.5 * IQR
+    upper = Q3 + 1.5 * IQR
+    df = df[(df[column] >= lower) & (df[column] <= upper)]
 
+print(f"(Rows, Columns) after removing outliers as determined by IQR: {df.shape}") 
+
+
+#===QUALITY BINNING===
+# pd.cut(x, bins, labels)
+df["quality_label"] = pd.cut(df["quality"], [2,4,6,8], labels=["low", "medium", "high"])
+print(df["quality_label"].value_counts())
+
+
+#===EXPORT TO NEW CSV===
+# df.to_csv (new files name, maintain semicolon as seperator, do not add column and row nums)
+df.to_csv(DATA_PATH_CLEANED, sep=';', index=False )
 
 
 
