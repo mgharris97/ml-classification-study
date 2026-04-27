@@ -14,35 +14,43 @@ Machine learning classification project applying supervised and unsupervised alg
 
 | Library | Purpose |
 |---|---|
-| numpy | Numerical operations and array handling |
 | pandas | Data loading and manipulation |
 | scikit-learn | ML model training and evaluation |
 | matplotlib | Data visualization |
 | seaborn | Statistical data visualization |
-| FastAPI | API endpoint |
 | Jupyter | Interactive notebooks for analysis and reporting |
 
 ## To set up on your end...
+
 ### 1. Clone the repository
 ```bash
 git clone https://github.com/mgharris97/ml-classification-study.git
 cd ml-classification-study
 ```
+
 ### 2. Create and activate the virtual environment
 ```bash
 python -m venv venv
 source venv/bin/activate
 ```
 > On Windows: `venv\Scripts\activate`
+
 ### 3. Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
-### 4. Download the dataset and extract `winequality-red.csv`
 
-[University of California, Irvice Wine Quality Dataset](https://archive.ics.uci.edu/dataset/186/wine+quality)
+### 4. Download the dataset (We are only using the Red Wine set)
+[University of California, Irvine Wine Quality Dataset](https://archive.ics.uci.edu/dataset/186/wine+quality)
 
-### 5. Save your dataset in the following location
+Extract and save `winequality-red.csv` to the following location:
 > `ml-classification-study/data/winequality-red.csv`
-> 
-> The dataset itself will not get uploaded to the repo, but will remian locally on your machine and the program uses a pathlib constant `DATA_PATH` to find it regardless of system 
+>
+> The dataset will not be uploaded to the repo. It stays local on your machine and the program uses a `pathlib` constant to locate it regardless of OS.
+
+### 5. Run the preprocessing script
+```bash
+cd src
+python3 preprocess.py
+```
+> This will generate `winequality-red-cleaned.csv` in the `data/` folder.
