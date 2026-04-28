@@ -57,8 +57,8 @@ df.to_csv(DATA_PATH_CLEANED, sep=';', index=False )
 #===CORELATION MATRIX BETWEEN FEATURES===
 # pd.set_option('display.max_columns', None)
 # print(f"\nCorrelation Matrix Between Features:\n {df.drop(columns=["quality_label"]).corr()}")
-# corr_matrix = df.drop(columns=["quality_label"]).corr()
-# print (corr_matrix[abs(corr_matrix ) > 0.5 ].to_string())
+corr_matrix = df.drop(columns=["quality_label"]).corr()
+print (corr_matrix.to_string())
 
 
 
