@@ -3,19 +3,23 @@
 # Explore (26-28)
 # Duplicates (25-28)
 # Missing values (30-31)
-# Outliers  (33-44)
+# Outliers  (34-42)
 # Bin quality
 # Export to a new CSV that will be used for training
 
 
 from pathlib import Path
 import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_PATH = BASE_DIR / "data" / "winequality-red.csv"
 DATA_PATH_CLEANED = BASE_DIR / "data" / "winequality-red-cleaned.csv"
+DATA_PATH_NORMALIZED = BASE_DIR / "data" / "winequality-red-normalized.csv"
 
 df = pd.read_csv(DATA_PATH, sep=";")
+feature_columns = ["fixed acidity", "volatile acidity", "citric acid", "residual sugar", "chlorides", "free sulfur dioxide", "total sulfur dioxide", "density", "pH", "sulphates", "alcohol"]
+
 
 # Explore the dataset to see if Pandas parses it correctly
 print(f"total number of rows and columns in the dataset: {df.shape}")
@@ -32,7 +36,6 @@ print(f"number of empty fields in each column:\n{df.isnull().sum()}")
 
 # ===OUTLIERS USING IQR===
 # Finding outliers in the dataset using IQR method 
-# After running and excluding outliers, the dataset shrinks from (rows, columns) -> (1359, 12) to (985, 12)
 for column in df.columns[:-1]:
     Q1 = df[column].quantile(0.25)
     Q3 = df[column].quantile(0.75)
@@ -57,8 +60,17 @@ df.to_csv(DATA_PATH_CLEANED, sep=';', index=False )
 #===CORELATION MATRIX BETWEEN FEATURES===
 # pd.set_option('display.max_columns', None)
 # print(f"\nCorrelation Matrix Between Features:\n {df.drop(columns=["quality_label"]).corr()}")
-corr_matrix = df.drop(columns=["quality_label"]).corr()
-print (corr_matrix.to_string())
+# corr_matrix = df.drop(columns=["quality_label"]).corr()
+# print (corr_matrix[abs(corr_matrix ) > 0.5 ].to_string())
+
+
+#===NORMALIZING DATASET===
+scaler = MinMaxScaler()
+df[feature_columns] = scaler.fit_transform(df[feature_columns])
+df.to_csv(DATA_PATH_NORMALIZED, sep=";", index=False)
+
+
+
 
 
 
