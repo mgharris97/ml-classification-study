@@ -54,8 +54,12 @@ print(df["quality_label"].value_counts())
 # df.to_csv (new files name, maintain semicolon as seperator, do not add column and row nums)
 df.to_csv(DATA_PATH_CLEANED, sep=';', index=False )
 
-#===CORELATION BETWEEN FEATURES===
-print(f"\nCorretlation between features:\n {df.drop(columns=["quality_label"]).corr()}")
+#===CORELATION MATRIX BETWEEN FEATURES===
+# pd.set_option('display.max_columns', None)
+# print(f"\nCorrelation Matrix Between Features:\n {df.drop(columns=["quality_label"]).corr()}")
+# corr_matrix = df.drop(columns=["quality_label"]).corr()
+# print (corr_matrix[abs(corr_matrix ) > 0.5 ].to_string())
+
 
 
 
