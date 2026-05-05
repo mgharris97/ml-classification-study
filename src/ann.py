@@ -22,7 +22,7 @@ y = df["quality_label"]
 
 # 75/25 train/test split
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.25, random_state=42
+    X, y, test_size=0.25, random_state=42, stratify=y
 )
 
 print(f"Training set size: {X_train.shape[0]}")
